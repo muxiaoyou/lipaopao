@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-3.1.1.js" ></script>
+	</head>
+
+	<body>
+		<div class="box">
+			<!--<ul>
+				<li>
+					<div>
+						<img src="img/a.jpg" />
+						<h5>双十一清单，美鞋篇</h5>
+						<span class="sp1">95张图片·928人收藏</span>
+						<span class="sp2">by夏因</span>
+					</div>
+
+				</li>
+				<li>
+					<div>
+						<img src="img/b.jpg" />
+						<h5>双十一清单，穿搭篇</h5>
+						<span class="sp1">108张图片·1928人收藏</span>
+						<span class="sp2">by夏夏</span>
+					</div>
+
+				</li>
+				<li>
+					<div>
+						<img src="img/c.jpg" />
+						<h5>双十一清单，裙装篇</h5>
+						<span class="sp1">95张图片·928人收藏</span>
+						<span class="sp2">by因因</span>
+					</div>
+
+				</li>
+			
+			</ul>-->
+
+		</div>
+
+	</body>
+	<script>
+		var ajax = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+		ajax.open('Get', 'http://127.0.0.1:8020/text5/data.json', true);
+		ajax.send();
+		ajax.onreadystatechange = function() {
+			if(ajax.readyState == 4) {
+				if(ajax.status >= 200 && ajax.status <= 206 || ajax.status == 304) {
+					var data = JSON.parse(ajax.responseText);
+					var obj=data.arr;
+					console.log(obj);
+					for(var i = 0; i < obj.length; i++) {
+						var oLi = $("<li/>").appendTo(".box");
+						var di = $("<div/>").appendTo(oLi);
+						var im = $("<img/>").appendTo(di).attr("src",obj[i]["img"]);
+						var h = $("<h5/>").appendTo(di).html(obj[i]["title"]);
+						var sp=$("<span/>").appendTo(di).addClass("sp1").html(obj[i]["pic"]);
+						var ps=$("<span/>").addClass("sp2").appendTo(di).html(obj[i]["come"]);
+						
+						
+					}
+				}
+			}
+		}
+	</script>
+
+</html>

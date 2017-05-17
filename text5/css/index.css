@@ -1,0 +1,27 @@
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	background-color: gray;
+}
+.box{
+	width: 745px;
+	height: 350px;
+	margin: 0 auto;
+	margin-top: 150px;
+	background-color:gainsboro ;
+}
+span{
+	display: block;
+	font-size: 12px;
+}
+li{
+	list-style-type: none;
+	float: left;
+	margin-left: 6px;
+}
+img{
+	width:240px;
+	height: 245px;
+}
